@@ -13,22 +13,22 @@ channel_id=943720617780334635
 
 pairs = [
     {
-        "Sean": ["Kevin", "Steven"],
-        "Jimmy": ["Steven", "Kevin"],
-        "Kevin": ["Sean", "Jimmy"],
+        "Sean": ["Evelyn", "Steven"],
+        "Jimmy": ["Steven", "Evelyn"],
+        "Evelyn": ["Sean", "Jimmy"],
         "Steven": ["Jimmy", "Sean"]
     },
     {
         "Sean": ["Jimmy", "Steven"],
-        "Jimmy": ["Sean", "Kevin"],
-        "Kevin": ["Steven", "Jimmy"],
-        "Steven": ["Kevin", "Sean"]
+        "Jimmy": ["Sean", "Evelyn"],
+        "Evelyn": ["Steven", "Jimmy"],
+        "Steven": ["Evelyn", "Sean"]
     },
     {
-        "Sean": ["Jimmy", "Kevin"],
+        "Sean": ["Jimmy", "Evelyn"],
         "Jimmy": ["Sean", "Steven"],
-        "Kevin": ["Steven", "Sean"],
-        "Steven": ["Kevin", "Jimmy"]
+        "Evelyn": ["Steven", "Sean"],
+        "Steven": ["Evelyn", "Jimmy"]
     }
 ]
 
@@ -36,8 +36,11 @@ usernames = {
     "6971": "Jimmy",
     "8829": "Sean",
     "2803": "Steven",
-    "8384": "Kevin"
+    "8384": "Evelyn"
 }
+
+total_days_in_week = 7
+monday_day_num = 1
 
 def get_schedule():
     week_num = datetime.date.today().isocalendar()[1]
@@ -62,8 +65,8 @@ async def before_send_weekly_schedule():
     # Sunday is 6
     if(weekday_num != 0):
         # Calculate number of seconds till Sunday and sleep before sending
-        seconds_till_sunday = (6-weekday_num)*24*60*60
-        await asyncio.sleep(seconds_till_sunday)
+        seconds_till_monday = (total_days_in_week-weekday_num+monday_day_num)*24*60*60
+        await asyncio.sleep(seconds_till_monday)
 
 @bot.command(name='partners', help='Tells you who you are paired with this week 👍')
 async def send_partners_message(ctx):
