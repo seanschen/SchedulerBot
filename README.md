@@ -10,5 +10,5 @@ Tutorial here: https://towardsaws.com/building-hosting-a-discord-bot-on-aws-e157
 | Plugin | README |
 | ------ | ------ |
 | !partners | prints out who the caller of this command is paired with this week |
-| !partners | prints out full schedule for this week |
+| !schedule | prints out full schedule for this week |
 | !loop  | (Internal-only) starts task to print out schedule every Sunday  |
